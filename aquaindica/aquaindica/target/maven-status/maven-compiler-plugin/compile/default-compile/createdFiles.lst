@@ -1,0 +1,6 @@
+com\aquaindica\AquaindicaApplication.class
+com\aquaindica\service\ContactService.class
+com\aquaindica\controller\ContactController.class
+com\aquaindica\repository\ContactRepository.class
+com\aquaindica\dto\ContactRequest.class
+com\aquaindica\Entity\ContactMessage.class
