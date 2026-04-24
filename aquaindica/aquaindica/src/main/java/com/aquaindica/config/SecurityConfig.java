@@ -35,7 +35,7 @@ public class SecurityConfig {
                                 "/api/contact",
                                 "/api/admin/blogs/getBlogs",
                                 "/api/gallery",
-                                "/gallery/{id}").permitAll()
+                                "/gallery/{id}",  "/api/services").permitAll()
 
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/admin/detail/image/**").permitAll()
