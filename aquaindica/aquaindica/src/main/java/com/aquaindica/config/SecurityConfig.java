@@ -30,14 +30,15 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/admin/login",
-                        "/api/admin/verify-otp",
-                        "/api/contact",
-                        "/api/admin/blogs/getBlogs",
-                        "/api/gallery",
-                        "/gallery/{id}").permitAll()
+                        .requestMatchers("/api/admin/login",
+                                "/api/admin/verify-otp",
+                                "/api/contact",
+                                "/api/admin/blogs/getBlogs",
+                                "/api/gallery",
+                                "/gallery/{id}").permitAll()
 
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/admin/detail/image/**").permitAll()
                         //contact
                         .requestMatchers("/api/contact/all").hasRole("ADMIN")
                         .requestMatchers("/api/contact/archive/{id}").hasRole("ADMIN")
@@ -49,9 +50,9 @@ public class SecurityConfig {
                         //gallary
                         .requestMatchers("/api/admin/gallery").hasRole("ADMIN")
                         .requestMatchers("/api/admin/gallery/{id}").hasRole("ADMIN")
-                .anyRequest().authenticated()
-            )
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                        .anyRequest().authenticated()
+                )
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
